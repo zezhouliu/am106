@@ -29,7 +29,7 @@ def diffie_helman(g):
 
 if __name__ == '__main__':
     """
-    Generates all elements of Sn
+    Implements Diffie-Helman
     """
 
     # num args and args

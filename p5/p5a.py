@@ -39,7 +39,7 @@ def random_generator(power=100):
 
 if __name__ == '__main__':
     """
-    Generates all elements of Sn
+    Generates a random generator for U(3^100)
     """
 
     # num args and args
