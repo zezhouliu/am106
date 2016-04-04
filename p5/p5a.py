@@ -2,16 +2,9 @@ import random
 import sys
 import itertools
 
-def validate(n):
+def random_generator(power=100):
     """
-    Validates if the number b is relatively prime to 3^100.
-    This requires checking if it is divisible by 3.
-    """
-    return n % 3 != 0
-
-def random_generator():
-    """
-    Returns a random generator for U(3^100).
+    Returns a random generator for U(3^power), where power defaults to 100.
 
     There is a theorem that says if g is a generator of a group of order n,
     then every k > 1 that satisifies gcd(k, n) = 1 will be a generator of
@@ -28,7 +21,6 @@ def random_generator():
     Now, we notice that gcd(k, 3^99 * 2) = 1 whenever the number is not a
     multiple of 2 or 3. As a result, we just enumerate through the numbers.
     """
-    power = 100
     n = pow(3,power - 1) * 2
     m = pow(3,power)
 
@@ -52,10 +44,16 @@ if __name__ == '__main__':
 
     # num args and args
     num_args = len(sys.argv)
-    if num_args != 1:
-        print 'usage: python p5a.py'
-    else:
-       gen = random_generator()
-       print gen
+    if num_args != 1 and num_args != 2:
+        print 'usage: python p5a.py <opt: exponent>'
+    elif num_args == 1:
+        print '>>>> Note: If this is slow, try doing python p5a.py <opt: exponent> to try a lower power than 3^100'
+        gen = random_generator()
+        print gen
+    elif num_args == 2:
+        print '>>>> Exponent: ', int(sys.argv[1])
+        gen = random_generator(int(sys.argv[1]))
+        print gen
+
 
 
